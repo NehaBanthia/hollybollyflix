@@ -1,44 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../Style/login.css"/>
-
-</head>
-<body>
-
-<h1>MOVIEFLIX</h1>
-
-<div class="LoginForm">
-    <h2>Sign In</h2>
-    <hr>
-    <div class="LoginData">
-        <div class="form-group">
-            <label for="usr">UserName</label>
-            <input type="text" class="form-control" id="usr" placeholder="Enter your Email" required = "required" size=30 maxlength="10">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../Style/login.css"/>
+    </head>
+    <body>
+        <h1>MOVIEFLIX</h1>
+        <div class="LoginForm">
+            <h2>Sign In</h2>
+            <hr>
+            <div class="LoginData">
+                <div class="form-group">
+                    <label for="usr">UserName</label>
+                    <input type="text" class="form-control" id="usr" placeholder="Enter your Email" required = "required" size=30 maxlength="10">
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter your password" required = "required" size=30 minlength="6"/>
+                </div>
+            </div>
+            <div class="SignInForm">
+            <button type="submit" class="btn btn-info" onclick = window.location.href="movieflix.html">Sign In</button>
+            </div>
+            <div class="ForgetPassword">
+                <a href="forgot.html">Forgot your password!</a>
+            </div>
+            <div class="SignUp">
+                New to Movieflix?  <a href="signup.html"><em><b>Sign Up Now!</b></em></em></a>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="Password">Password</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter your password" required = "required" size=30 minlength="6"/>
-        </div>
-    </div>
-    <div class="SignInForm">
-    <button type="submit" class="btn btn-info" onclick = window.location.href="movieflix.html">Sign In</button>
-    </div>
-    <div class="ForgetPassword">
-        <a href="forgot.html">Forgot your password!</a>
-    </div>
-
-    <div class="SignUp">
-        New to Movieflix?  <a href="signup.html"><em><b>Sign Up Now!</b></em></em></a>
-    </div>
-</div>
-
-
-
-</body>
+    </body>
 </html>

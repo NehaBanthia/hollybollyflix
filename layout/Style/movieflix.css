@@ -8,11 +8,9 @@ ul {
     overflow: hidden;
     background-color: #000;
 }
-
 li {
     float: left;
 }
-
 li a, .dropbtn{
     display: inline-block;
     color: white;
@@ -21,11 +19,9 @@ li a, .dropbtn{
     text-decoration: none;
     font-size: large;
 }
-
 li a:hover, .dropdown:hover .dropbtn {
     background-color: #d1312b;
 }
-
 li.dropdown {
     display: inline-block;
 }
@@ -39,7 +35,6 @@ li:last-child {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(106, 106, 106, 0.2);
 }
-
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -47,9 +42,9 @@ li:last-child {
     display: block;
     text-align: left;
 }
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -87,6 +82,5 @@ img:hover{
 }
 .MovieflixForm{
     padding: 2rem;
-
 }
 
