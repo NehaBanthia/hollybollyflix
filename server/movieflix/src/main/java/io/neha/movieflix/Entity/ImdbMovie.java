@@ -33,6 +33,11 @@ public class ImdbMovie {
 	public String getTitle() {
 		return title;
 	}
+	
+	
+	
+	
+	
 	public void setTitle(String title) {
 		title = title;
 	}
