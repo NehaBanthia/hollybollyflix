@@ -1,6 +1,4 @@
-/**
- * Created by Neha on 8/13/2016.
- */
+
 (function() {
     'use strict';
 
