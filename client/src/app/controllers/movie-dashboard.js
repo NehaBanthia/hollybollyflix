@@ -7,9 +7,20 @@
     angular.module('movieflix')
         .controller('MovieflixDashboard', MovieflixDashboard);
 
-    //LoginController.$inject = ['userService'];
+    MovieflixDashboard.$inject = ['$http', '$window'];
 
-    function MovieflixDashboard() {
+    function MovieflixDashboard($http, $window) {
         var movieflixDashboardVm = this;
+        movieflixDashboardVm.latestMovies=[];
+        init();
+        function init(){
+
+            $http.get('http://localhost:8080/movieflix/api/movies/sortByYear')
+                .then(function(response){
+                    movieflixDashboardVm.latestMovies=response.data;
+                },function(error){
+
+                })
+        }
     }
 })();

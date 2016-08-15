@@ -41,6 +41,16 @@ label{
 .btn-info{
     width: 31rem;
 }
+.ValidationError{
+    color:red;
+    font-style: italic;
+}
+.LoginError{
+    color:red;
+    font-style: italic;
+    font-weight: 600;
+    text-align: center;
+}
 .SignUp {
     padding-top: 1rem;
     padding-bottom: 2.5rem;
