@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -20,14 +21,19 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.query.criteria.internal.expression.function.AggregationFunction.MAX;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 @NamedQueries({
 	@NamedQuery(name="Movie.findAll", query ="SELECT m FROM Movie m"),
-	@NamedQuery(name="Movie.FindByTitle", query ="SELECT m FROM Movie m where title like :searchText"),
+	@NamedQuery(name="Movie.FindByTitle", query ="SELECT m FROM Movie m where lower(title) like lower(:searchText)"),
 	@NamedQuery(name="Movie.FindByYear", query ="SELECT m FROM Movie m where Year = :myear"),
-	@NamedQuery(name="Movie.SortByYear", query ="SELECT m FROM Movie Order By Released Desc"),
-	@NamedQuery(name="Movie.SortByRating", query ="SELECT m FROM Movie m Order By ImdbRating Desc")
+	@NamedQuery(name="Movie.SortByYear", query ="SELECT m FROM Movie m Order By Released Desc"),
+	@NamedQuery(name="Movie.SortByRating", query ="SELECT m FROM Movie m Order By ImdbRating Desc"),
+	@NamedQuery(name="Movie.GetTopLatestMovieType", query="SELECT m FROM Movie m inner join MovieType mt on m.Type.Id=mt.Id where mt.MovieType = :mType Order By m.Released Desc"),
+	@NamedQuery(name="Movie.GetTopRatedMovieType", query="SELECT m FROM Movie m inner join MovieType mt on m.Type.Id=mt.Id where mt.MovieType = :mType Order By m.ImdbRating Desc"),
+	@NamedQuery(name="Movie.GetMovieByGenre", query="SELECT m FROM Movie m inner join m.Genres g where lower(g.GenreName) = lower(:mGenre) Order By m.Released Desc")
 })
 public class Movie {
 	
@@ -48,6 +54,7 @@ public class Movie {
 	@Column(length = 4000)
 	private String Actors;
 	@Column(length = 4000)
+
 	private String Plot;
 	@Column(length = 4000)
 	private String Awards;
@@ -95,6 +102,7 @@ public class Movie {
 	public String getYear() {
 		return Year;
 	}
+	
 	public void setYear(String year) {
 		Year = year;
 	}
@@ -107,6 +115,7 @@ public class Movie {
 	public int getRating() {
 		return Rating;
 	}
+	
 	public void setRating(int rating) {
 		Rating = rating;
 	}

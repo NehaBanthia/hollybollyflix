@@ -7,27 +7,31 @@
     angular.module('movieflix')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$http','$window','$scope'];
+    LoginController.$inject = ['LoginService','$window','$rootScope'];
 
-    function LoginController($http,$window,$scope) {
+    function LoginController(LoginService, $window, $rootScope) {
         var loginVm = this;
+
         loginVm.doLogin=doLogin;
 
-        function doLogin(){
-            if(loginVm.username && loginVm.usrPassword){
-                $http.post('http://localhost:8080/movieflix/api/user/auth',{emailId:loginVm.username,password:loginVm.usrPassword})
-                    .then(function(response){
-                        var auth=response.data;
-                        if(auth.authorized){
-                            $scope.username=auth.user.firstName+" "+auth.user.lastName;
-                            $window.location.href='#/movieflix';
+        function doLogin() {
+            if (loginVm.username && loginVm.usrPassword) {
+                var userDetails={emailId: loginVm.username, password: loginVm.usrPassword};
+                LoginService
+                    .doLogin(userDetails)
+                    .then(function (response) {
+                        var auth = response;
+                        if (auth.authorized) {
+                            $rootScope.username = auth.user.firstName + " " + auth.user.lastName;
+                            $rootScope.userId=auth.user.userId;
+                            $window.location.href = '#/movieflix';
                         }
-                        else{
-                            loginVm.loginError='Invalid credentials';
+                        else {
+                            loginVm.loginError="Invalid Credentials."
                         }
-                    },function(error){
-
-                    })
+                    }, function (error) {
+                        console.log(error);
+                    });
             }
         }
     }

@@ -52,5 +52,5 @@ public class JPAConfig {
 		props.setProperty("hibernate.format_sql", "true");
 		return props;
 	}
-
+	
 }

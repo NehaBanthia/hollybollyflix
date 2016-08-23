@@ -1,61 +1,61 @@
-<div>
-    <h1>MOVIEFLIX</h1>
-    <div class="SignUpForm">
-        <h2>Sign Up Now</h2>
-        <p>Already a user? Please <a ng-href="#/login"><em><b>Sign In</b></em></a> here.</p>
+<div class="LoginMain">
+    <h1 class="MovieFLixLogo">MOVIEFLIX</h1>
+    <div class="Form">
+        <h2 class="FormHeader">Sign Up Now</h2>
+        <p class="pText">Already a user? Please <a class="Link" ng-href="#/login"><em><b>Sign In</b></em></a> here.</p>
         <hr>
-        <form name="signUpForm" novalidate>
+        <form name="signUpForm" ng-submit="signUpForm.$setPristine()" novalidate>
             <div class="SignUpData">
                 <div class="form-group">
-                    <label for="Name">Name</label>
-                    <input type="text" class="form-control" name="firstName" ng-model="signupVm.firstName" placeholder="Enter your Firstname" required="">
-                    <div class="ValidationError" ng-show="signUpForm.$submitted || signUpForm.firstName.$touched">
-                        <div ng-show="signUpForm.firstName.$error.required">Please enter you first name.</div>
+                    <label class="FormLabel" for="Name">Name</label>
+                    <input type="text" class="form-control" name="firstName" ng-model="signupVm.firstName"
+                           placeholder="Enter your Firstname" required minlength="4">
+                    <div ng-show="signUpForm.firstName.$error" ng-if="signUpForm.firstName.$dirty">
+                        <p ng-show="signUpForm.firstName.$error.required" class="ValidationError">First Name is required</p>
+                        <p ng-show="signUpForm.firstName.$error.minlength" class="ValidationError">First Name has to be at least 4 chars</p>
                     </div>
-                    <input type="text" class="form-control" name="lastName" ng-model="signupVm.lastName" placeholder="Enter your Lastname" required="">
-                    <div class="ValidationError" ng-show="signUpForm.$submitted || signUpForm.lastName.$touched">
-                        <div ng-show="signUpForm.lastName.$error.required">Please enter you last name.</div>
+                    <input type="text" class="form-control" name="lastName" ng-model="signupVm.lastName"
+                           placeholder="Enter your Lastname" required minlength="4">
+                    <div ng-show="signUpForm.lastName.$error" ng-if="signUpForm.lastName.$dirty">
+                        <p ng-show="signUpForm.lastName.$error.required" class="ValidationError">Last Name is required</p>
+                        <p ng-show="signUpForm.lastName.$error.minlength" class="ValidationError">Last Name has to be at least 4 chars</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Email">Email</label>
-                    <input type="text" class="form-control" name="uEmail" ng-model="signupVm.email" placeholder="Enter your email" required="">
-                    <div class="ValidationError" ng-show="signUpForm.$submitted || signUpForm.uEmail.$touched">
-                        <span ng-show="signUpForm.uEmail.$error.required">Please enter your email.</span>
-                        <span ng-show="signUpForm.uEmail.$error.email">This is not a valid email.</span>
+                    <label class="FormLabel" for="Email">Email</label>
+                    <input type="email" class="form-control" name="uEmail" ng-model="signupVm.email" placeholder="Enter your email" required>
+                    <div ng-show="signUpForm.uEmail.$error" ng-if="signUpForm.uEmail.$dirty">
+                        <p ng-show="signUpForm.uEmail.$error.required" class="ValidationError">Email is required</p>
+                        <p ng-show="signUpForm.uEmail.$error.email" class="ValidationError">Email is invalid.</p>
                     </div>
 
                 </div>
                 <div class="form-group">
-                    <label for="Password">Password</label>
+                    <label class="FormLabel" for="Password">Password</label>
                     <input type="text" class="form-control" name="pword" ng-model="signupVm.password"
-                           placeholder="Enter your password" ng-minlength="8" ng-maxlength="20"
-                           ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/"required="">
-                    <div class="ValidationError" ng-show="signUpForm.$submitted || signUpForm.pword.$touched">
-                        <div ng-show="signUpForm.pword.$error.required">Please enter you password.</div>
-                        <div ng-show="!signUpForm.pword.$error.required &&
-                            (signUpForm.pword.$error.minlength || signUpForm.pword.$error.maxlength) &&
-                            signUpForm.pword.$dirty">Passwords must be between 8 and 20 characters.</div>
-                        <div ng-show="!signUpForm.pword.$error.required && !signUpForm.pword.$error.minlength &&
-                        !signUpForm.pword.$error.maxlength && signUpForm.pword.$error.pattern && signUpForm.pword.$dirty">
-                            Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</div>
-
+                           placeholder="Enter your password" minlength="8" maxlength="20"
+                           ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required>
+                    <div ng-show="signUpForm.pword.$error" ng-if="signUpForm.pword.$dirty">
+                        <p ng-show="signUpForm.pword.$error.required" class="ValidationError">Password is required</p>
+                        <p ng-show="signUpForm.pword.$error.minlength || signUpForm.pword.$error.maxlength"
+                           class="ValidationError">Passwords must be between 8 and 20 characters.</p>
+                        <p ng-show="signUpForm.pword.$error.pattern"
+                           class="ValidationError">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="ConfirmPassword">Confirm Password</label>
+                    <label class="FormLabel" for="ConfirmPassword">Confirm Password</label>
                     <input type="text" class="form-control" name="confirmPassword" ng-model="signupVm.confirmPassword"
-                           placeholder="Enter your password" valid-password-c required="">
-                    <div class="ValidationError" ng-show="signUpForm.$submitted || signUpForm.confirmPassword.$touched">
-                        <div ng-show="signUpForm.confirmPassword.$error.required">Please confirm your password.</div>
-                        <div ng-show="!signUpForm.confirmPassword.$error.required &&
-                                        signUpForm.confirmPassword.$error.noMatch &&
-                                        signUpForm.confirmPassword.$dirty">Passwords do not match.</div>
+                           placeholder="Confirm your password" valid-password-c required>
+                    <div ng-show="signUpForm.confirmPassword.$error" ng-if="signUpForm.confirmPassword.$dirty">
+                        <p ng-show="signUpForm.confirmPassword.$error.required" class="ValidationError">Confirm your password.</p>
+                        <p ng-show="signUpForm.confirmPassword.$error.noMatch" class="ValidationError">Passwords do not match.</p>
                     </div>
                 </div>
             </div>
             <div class="SignUpButton">
-                <input type="submit" class="btn btn-info" ng-click="signupVm.signUpUser()" value="Sign Up"/>
+                <input type="submit" class="btn btn-info" ng-click="signupVm.signUpUser()"
+                       value="Sign Up"/>
             </div>
         </form>
 

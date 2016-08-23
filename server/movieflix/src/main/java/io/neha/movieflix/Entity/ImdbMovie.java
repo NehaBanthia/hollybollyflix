@@ -5,7 +5,7 @@ import java.util.Date;
 public class ImdbMovie {
 	
 	private String Id;
-	private String title;
+	private String Title;
 	private String Year;
 	private String Rated;
 	private String Released;
@@ -31,7 +31,7 @@ public class ImdbMovie {
 		Id = id;
 	}
 	public String getTitle() {
-		return title;
+		return Title;
 	}
 	
 	
@@ -39,7 +39,7 @@ public class ImdbMovie {
 	
 	
 	public void setTitle(String title) {
-		title = title;
+		Title = title;
 	}
 	public String getYear() {
 		return Year;

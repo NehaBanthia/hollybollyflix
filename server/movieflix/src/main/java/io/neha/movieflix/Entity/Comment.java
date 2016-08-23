@@ -1,20 +1,25 @@
 package io.neha.movieflix.Entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table
 @NamedQueries({
 	@NamedQuery(name="Comment.FindCommentsForGivenMovie", 
-			query ="SELECT C FROM Comment C WhERE movieId = :movieid")
+			query ="SELECT C FROM Comment C WhERE C.Movie.Id = :movieid")
 })
 public class Comment {
 	@Id
@@ -24,10 +29,10 @@ public class Comment {
 	
 	private String Comment;
 	
-	@OneToOne
+	@ManyToOne
 	private Movie Movie;
 	
-	@OneToOne
+	@ManyToOne
 	private User User;
 	
 	public String getId() {

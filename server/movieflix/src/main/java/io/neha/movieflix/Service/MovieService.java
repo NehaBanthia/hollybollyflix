@@ -19,5 +19,8 @@ public interface MovieService {
 	public Movie update(Movie mov);
 	public void delete(String movId);
 	public void createImdbMovies(List<ImdbMovie> moviesList);
+	public List<Movie> getTopRatedMovieType(String movieType,int isTopTen);
+	public List<Movie> getTopLatestMovieType(String movieType, int isTopTen);
+	public List<Movie> getMovieForGivenGenre(String genre);
 
 }

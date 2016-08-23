@@ -12,12 +12,10 @@ public class ReviewRepositoryImp implements ReviewRepository {
 private EntityManager em;
 
 	@Override
-	public Review FindOne(String movieId) {
-		TypedQuery<Review> query = em.createNamedQuery("Review.findMovieRatingAvg",Review.class);
+	public double FindOne(String movieId) {
+		TypedQuery<Double> query = em.createNamedQuery("Review.findMovieRatingAvg",Double.class);
 		query.setParameter("movieid", movieId);
-		Review ReviewDetails=query.getSingleResult();
-		return ReviewDetails;
-		
+		return query.getSingleResult();
 		
 	}
 

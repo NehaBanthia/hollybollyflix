@@ -24,6 +24,7 @@ import io.neha.movieflix.Exception.MovieNotFoundException;
 import io.neha.movieflix.Repository.MovieRepository;
 
 @Service
+
 public class MovieServiceImp implements MovieService {
 	
 	@Autowired
@@ -148,4 +149,18 @@ public class MovieServiceImp implements MovieService {
 			e.printStackTrace();
 		}
 	}
+	@Override
+	public List<Movie> getTopRatedMovieType(String movieType, int isTopTen) {
+		return repository.getTopRatedMovieType(movieType,isTopTen);
+	}
+	@Override
+	public List<Movie> getTopLatestMovieType(String movieType, int isTopTen) {
+		return repository.getTopLatestMovieType(movieType, isTopTen);
+	}
+	
+	@Override
+	public List<Movie> getMovieForGivenGenre(String genre) {
+		return repository.getMovieForGivenGenre(genre);
+	}
+	
 }

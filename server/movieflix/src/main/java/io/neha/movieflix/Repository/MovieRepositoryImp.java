@@ -98,4 +98,36 @@ public class MovieRepositoryImp implements MovieRepository{
 		em.remove(mov);
 		
 	}
+
+	@Override
+	public List<Movie> getTopRatedMovieType(String movieType,int isTopTen) {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.GetTopRatedMovieType",Movie.class);
+		if(isTopTen==1){
+			query.setParameter("mType", movieType).setMaxResults(10);
+		}
+		else{
+			query.setParameter("mType", movieType);
+		}
+		
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Movie> getTopLatestMovieType(String movieType, int isTopTen) {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.GetTopLatestMovieType",Movie.class);
+		if(isTopTen==1){
+			query.setParameter("mType", movieType).setMaxResults(10);
+		}
+		else{
+			query.setParameter("mType", movieType);
+		}
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Movie> getMovieForGivenGenre(String genre) {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.GetMovieByGenre",Movie.class);
+		query.setParameter("mGenre", genre).setMaxResults(10);
+		return query.getResultList();
+	}
 }

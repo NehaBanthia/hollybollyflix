@@ -4,6 +4,7 @@ public class Auth {
 	private boolean IsAuthorized;
 	private String AuthToken;
 	private User user;
+	
 	public boolean isAuthorized() {
 		return IsAuthorized;
 	}

@@ -47,10 +47,23 @@ public class MovieController {
 	
 	@RequestMapping(method = RequestMethod.GET,path="sortByYear", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Movie> sortAllByYear(){
-	return service.sortAllByYear();
+		return service.sortAllByYear();
 	}
 	
+	@RequestMapping(method = RequestMethod.GET,path="getTopRatedMovieType/{movieType}/{isTopTen}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> getTopRatedMovieType(@PathVariable("movieType") String movieType,@PathVariable("isTopTen") int isTopTen){
+		return service.getTopRatedMovieType(movieType,isTopTen);
+	}
 	
+	@RequestMapping(method = RequestMethod.GET,path="getTopLatestMovieType/{movieType}/{isTopTen}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> getTopLatestMovieType(@PathVariable("movieType") String movieType,@PathVariable("isTopTen") int isTopTen){
+		return service.getTopLatestMovieType(movieType,isTopTen);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,path="getMovieByGenre/{genre}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Movie> getMovieByGenre(@PathVariable("genre") String genre){
+		return service.getMovieForGivenGenre(genre);
+	}
 	
 		
 }

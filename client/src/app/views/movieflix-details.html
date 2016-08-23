@@ -1,0 +1,50 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/movieflix">MOVIEFLIX</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#/movieflix">Home</a></li>
+            <li class=""><a href="#">Admin</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a><span class="glyphicon glyphicon-user"></span> {{movieDetailVm.username}}</a></li>
+            <li><a href="#/login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="MovieFlix-Dashboard">
+    <div class="MovieDetails">
+        <div class="left-div">
+            <img class="SingleMoviePoster" ng-src = {{movieDetailVm.details.poster}}>
+            <div class="userComments">
+                <label for="Comments"></label>
+                <input type="text" class="form-control" placeholder="Comments" ng-model="movieDetailVm.userComment">
+                <select ng-model="movieDetailVm.selectedReview" ng-change="movieDetailVm.submitReview()"
+                        ng-options="option as option.name for option in movieDetailVm.reviewOption">
+                    </select>
+            </div>
+            <button id="button" ng-click="movieDetailVm.submitComment()">Submit</button>
+            <div>
+                <Label ng-repeat="comment in movieDetailVm.movieComments">{{comment.comment}}</Label>
+            </div>
+        </div>
+        <div class="right-div">
+            <label class="MovieName">{{movieDetailVm.details.title}}</label>
+
+            <div>
+                <p><img class="MovieRating"src="../Images/star.png"/> {{movieDetailVm.movieReview}} | {{movieDetailVm.details.year}} | {{movieDetailVm.details.runtime}} | {{movieDetailVm.details.rated.rated}}</p><br/>
+                <p>{{movieDetailVm.details.plot}}</p>
+            </div>
+            <div class="MovieStars">
+                Genre: <span ng-repeat="genre in movieDetailVm.details.genres">{{genre.genreName}}{{$last ? '' : ', '}}</span><br/>
+                Director: {{movieDetailVm.details.director}}<br/>
+                Starring: {{movieDetailVm.details.actors}}<br/>
+                Awards: {{movieDetailVm.details.awards}}
+                <p> {{movieDetailVm.details.type.movieType}} | <span ng-repeat="language in movieDetailVm.details.language">{{language.language}}{{$last ? '' : ', '}}</span> | <span ng-repeat="country in movieDetailVm.details.country">{{country.country}}{{$last ? '' : ', '}}</span> | <img class="MovieRating"src="../Images/star.png"/>
+                    {{movieDetailVm.details.imdbRating}} </p>
+            </div>
+        </div>
+    </div>
+</div>
+

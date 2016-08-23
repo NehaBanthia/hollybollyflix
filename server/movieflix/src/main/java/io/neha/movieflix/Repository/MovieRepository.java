@@ -14,5 +14,7 @@ public interface MovieRepository {
 	public Movie create(Movie mov);
 	public Movie update(Movie mov);
 	public void delete(Movie mov);
-	
-	}
+	public List<Movie> getTopRatedMovieType(String movieType,int isTopTen);
+	public List<Movie> getTopLatestMovieType(String movieType, int isTopTen);
+	public List<Movie> getMovieForGivenGenre(String genre);
+}
