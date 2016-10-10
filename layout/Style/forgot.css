@@ -1,0 +1,50 @@
+body {
+    background: url(../Images/login.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.ForgotForm{
+    background-color: #F3F3E8;
+    width: 35rem;
+    margin:10rem 0px 0px 73rem;
+    box-shadow: 0.5rem 0.5rem 1rem #000000;
+}
+h2{
+    padding-top: 2.5rem;
+    font-family: freight-display-pro,sans-serif;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+.ForgotPassword{
+    margin: 0rem 2rem 0px 2rem;
+}
+.SignInAgain{
+    padding-top: 2rem;
+    text-align: center;
+    padding-bottom: 2.5rem;
+}
+.btn-info{
+    width: 31rem;
+}
+h1 {
+    color: #d1312b;
+    padding-left: 113rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+}
+a:link {
+    text-decoration: underline;
+    color: darkblue;
+}
+a:hover{
+    color: mediumblue;
+    text-decoration:none;
+}
+a:visited{color:darkblue;}
+hr{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}

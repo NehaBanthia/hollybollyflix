@@ -1,0 +1,86 @@
+body {margin:0;
+    background-color: dimgrey}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+li {
+    float: left;
+}
+li a, .dropbtn{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 23px 27px;
+    text-decoration: none;
+    font-size: large;
+}
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #d1312b;
+}
+li.dropdown {
+    display: inline-block;
+}
+li:last-child {
+    float: right;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(106, 106, 106, 0.2);
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.MovieflixLogo{
+    color: #d1312b;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    font-size: xx-large;
+    padding: 14px 16px;
+}
+.search{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 23px 27px;
+    text-decoration: none;
+    font-size: large;
+}
+.search, .searchmovies{
+    padding-top: 1.2rem;
+    padding-bottom: 1rem;
+    padding-left: 28rem;
+}
+input[type="search"] {
+    width: 25rem;
+    height: 2rem;
+}
+img{
+    display: inline-block;
+    width: 11rem;
+    margin:0.1rem 0.1rem 0.1rem 0.1rem;
+}
+img:hover{
+    transform: scale(1.2);
+}
+.MovieflixForm{
+    padding: 2rem;
+}
+
