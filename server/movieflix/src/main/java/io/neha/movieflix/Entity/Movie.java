@@ -3,10 +3,13 @@ package io.neha.movieflix.Entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.enterprise.context.ConversationScoped;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -16,14 +19,21 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.query.criteria.internal.expression.function.AggregationFunction.MAX;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table
 @NamedQueries({
 	@NamedQuery(name="Movie.findAll", query ="SELECT m FROM Movie m"),
-	@NamedQuery(name="Movie.FindByTitle", query ="SELECT m FROM Movie m where title like :searchText"),
+	@NamedQuery(name="Movie.FindByTitle", query ="SELECT m FROM Movie m where lower(title) like lower(:searchText)"),
 	@NamedQuery(name="Movie.FindByYear", query ="SELECT m FROM Movie m where Year = :myear"),
-	@NamedQuery(name="Movie.SortByYear", query ="SELECT m FROM Movie m Order By Year Desc")
+	@NamedQuery(name="Movie.SortByYear", query ="SELECT m FROM Movie m Order By Released Desc"),
+	@NamedQuery(name="Movie.SortByRating", query ="SELECT m FROM Movie m Order By ImdbRating Desc"),
+	@NamedQuery(name="Movie.GetTopLatestMovieType", query="SELECT m FROM Movie m inner join MovieType mt on m.Type.Id=mt.Id where mt.MovieType = :mType Order By m.Released Desc"),
+	@NamedQuery(name="Movie.GetTopRatedMovieType", query="SELECT m FROM Movie m inner join MovieType mt on m.Type.Id=mt.Id where mt.MovieType = :mType Order By m.ImdbRating Desc"),
+	@NamedQuery(name="Movie.GetMovieByGenre", query="SELECT m FROM Movie m inner join m.Genres g where lower(g.GenreName) = lower(:mGenre) Order By m.Released Desc")
 })
 public class Movie {
 	
@@ -36,36 +46,44 @@ public class Movie {
 	private String Year;
 	private Date Released;
 	private int Rating;
+	private String Runtime;
+	@Column(length = 4000)
 	private String Director;
+	@Column(length = 4000)
 	private String Writer;
+	@Column(length = 4000)
 	private String Actors;
+	@Column(length = 4000)
+
 	private String Plot;
+	@Column(length = 4000)
 	private String Awards;
+	@Column(length = 4000)
 	private String Poster;
-	private double Metascore;
-	private double ImdbRating;
-	private Number ImdbVotes;
+	private String Metascore;
+	private String ImdbRating;
+	private String ImdbVotes;
 	
 	@Column(unique=true)
 	String ImdbID;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Genre> Genres;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Country> Country;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private MovieType Type;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private Rated Rated;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Language> Language;
 	
@@ -84,6 +102,7 @@ public class Movie {
 	public String getYear() {
 		return Year;
 	}
+	
 	public void setYear(String year) {
 		Year = year;
 	}
@@ -96,6 +115,7 @@ public class Movie {
 	public int getRating() {
 		return Rating;
 	}
+	
 	public void setRating(int rating) {
 		Rating = rating;
 	}
@@ -137,24 +157,7 @@ public class Movie {
 	public void setPoster(String poster) {
 		Poster = poster;
 	}
-	public double getMetascore() {
-		return Metascore;
-	}
-	public void setMetascore(double metascore) {
-		Metascore = metascore;
-	}
-	public double getImdbRating() {
-		return ImdbRating;
-	}
-	public void setImdbRating(double imdbRating) {
-		ImdbRating = imdbRating;
-	}
-	public Number getImdbVotes() {
-		return ImdbVotes;
-	}
-	public void setImdbVotes(Number imdbVotes) {
-		ImdbVotes = imdbVotes;
-	}
+	
 	public String getImdbID() {
 		return ImdbID;
 	}
@@ -191,4 +194,29 @@ public class Movie {
 	public void setType(MovieType type) {
 		Type = type;
 	}
+	public String getRuntime() {
+		return Runtime;
+	}
+	public void setRuntime(String runtime) {
+		Runtime = runtime;
+	}
+	public String getMetascore() {
+		return Metascore;
+	}
+	public void setMetascore(String metascore) {
+		Metascore = metascore;
+	}
+	public String getImdbRating() {
+		return ImdbRating;
+	}
+	public void setImdbRating(String imdbRating) {
+		ImdbRating = imdbRating;
+	}
+	public String getImdbVotes() {
+		return ImdbVotes;
+	}
+	public void setImdbVotes(String imdbVotes) {
+		ImdbVotes = imdbVotes;
+	}
+	
 }

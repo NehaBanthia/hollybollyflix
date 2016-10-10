@@ -1,0 +1,71 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/movieflix">MOVIEFLIX</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#/movieflix">Home</a></li>
+            <li class=""><a href="#">Admin</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a><span class="glyphicon glyphicon-user"></span> {{movieflixDashboardVm.username}}</a></li>
+            <li><a href="#/login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="MovieFlix-Dashboard">
+    <div class="MovieSearch">
+        <div class="form-group">
+            <input class="form-control" ng-model="movieflixDashboardVm.searchText" type="text" placeholder="Search movies....">
+        </div>
+        <button class="SearchBtn" ng-click="movieflixDashboardVm.searchMovieTitle()">Search</button>
+        <div class="dropdown">
+            <button class="dropbtn">Browse</button>
+            <div class="dropdown-content">
+                <a href="#/movieflix-search/genre/Action">Action</a>
+                <a href="#/movieflix-search/genre/Drama">Drama</a>
+                <a href="#/movieflix-search/genre/Fantasy">Fantasy</a>
+                <a href="#/movieflix-search/genre/Adventure">Adventure</a>
+                <a href="#/movieflix-search/genre/Mystery">Mystery</a>
+                <a href="#/movieflix-search/genre/Comedy">Comedy</a>
+                <a href="#/movieflix-search/genre/News">News</a>
+                <a href="#/movieflix-search/genre/Documentary">Documentary</a>
+                <a href="#/movieflix-search/genre/Western">Western</a>
+                <a href="#/movieflix-search/genre/Biography">Biography</a>
+                <a href="#/movieflix-search/genre/Crime">Crime</a>
+                <a href="#/movieflix-search/genre/History">History</a>
+            </div>
+        </div>
+    </div>
+    <div class="MovieflixForm">
+        <section>
+            <h3 class="ListType" ng-click="movieflixDashboardVm.searchMovie('latestMovies','all')"><span class="TypeText">Latest Movies</span></h3>
+            <div class="MovieList">
+                <img class="MoviePoster" ng-repeat="movie in movieflixDashboardVm.latestMovies" ng-src={{movie.poster}}
+                     ng-click="movieflixDashboardVm.showMovieDetails(movie.id)" />
+            </div>
+        </section>
+        <section>
+            <h3 class="ListType" ng-click="movieflixDashboardVm.searchMovie('latestSeries','all')"><span class="TypeText">Latest Series</span></h3>
+            <div class="MovieList">
+                <img class="MoviePoster" ng-repeat="movie in movieflixDashboardVm.latestSeries" ng-src={{movie.poster}}
+                 ng-click="movieflixDashboardVm.showMovieDetails(movie.id)" />
+            </div>
+        </section>
+        <section>
+            <h3 class="ListType" ng-click="movieflixDashboardVm.searchMovie('topMovies','all')"><span class="TypeText">Top Rated Movies</span></h3>
+            <div class="MovieList">
+                <img class="MoviePoster" ng-repeat="movie in movieflixDashboardVm.topRatedMovies" ng-src={{movie.poster}}
+                 ng-click="movieflixDashboardVm.showMovieDetails(movie.id)" />
+            </div>
+        </section>
+        <section>
+            <h3 class="ListType" ng-click="movieflixDashboardVm.searchMovie('topSeries','all')"><span class="TypeText">Top Rated Series</span></h3>
+            <div class="MovieList">
+                <img class="MoviePoster" ng-repeat="movie in movieflixDashboardVm.topRatedSeries" ng-src={{movie.poster}}
+                       ng-click="movieflixDashboardVm.showMovieDetails(movie.id)" />
+            </div>
+        </section>
+
+    </div>
+</div>

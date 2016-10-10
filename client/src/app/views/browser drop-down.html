@@ -1,0 +1,11 @@
+<div class="">ng-controller="myCtrl"></div>
+
+    <select></select>
+            <option ng-repeat="x in names">{{x}}</option>
+    </select>
+
+
+
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+        $scope.names =

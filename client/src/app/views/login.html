@@ -1,0 +1,35 @@
+<div class="LoginMain">
+    <h1 class="MovieFLixLogo">MOVIEFLIX</h1>
+    <form name="loginForm" class="Form" novalidate>
+        <h2 class="FormHeader">Sign In</h2>
+        <hr>
+        <div class="LoginData">
+            <div class="form-group">
+                <label class="FormLabel" for="usr">UserName</label>
+                <input type="text" class="form-control" name="uName" ng-model="loginVm.username" placeholder="Enter your Email" required="" >
+                <div class="ValidationError" ng-show="loginForm.$submitted || loginForm.uName.$touched">
+                    <div ng-show="loginForm.uName.$error.required">Please enter you username.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="FormLabel" for="Password">Password</label>
+                <input type="password" class="form-control" name="pword" ng-model="loginVm.usrPassword" placeholder="Enter your password" required=""  />
+                <div class="ValidationError" ng-show="loginForm.$submitted || loginForm.pword.$touched">
+                    <div ng-show="loginForm.pword.$error.required">Please enter you password.</div>
+                </div>
+            </div>
+        </div>
+        <div class="SignInForm">
+            <input type="submit" class="btn btn-info" ng-click="loginVm.doLogin()"  ng-disabled="signUpForm.$invalid"
+                   value="Sign In"/>
+        </div>
+        <div class="LoginError">{{loginVm.loginError}}</div>
+        <div class="ForgetPassword">
+            <a class="Link" ng-href="#/forgotpassword">Forgot your password!</a>
+        </div>
+        <div class="SignUp">
+            New to Movieflix?  <a class="Link" ng-href="#/signup"><em><b>Sign Up Now!</b></em></em></a>
+        </div>
+    </form>
+</div>

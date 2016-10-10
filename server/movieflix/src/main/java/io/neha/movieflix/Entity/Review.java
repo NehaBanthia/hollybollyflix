@@ -3,6 +3,7 @@ package io.neha.movieflix.Entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -14,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table
 @NamedQueries({
 	@NamedQuery(name="Review.findMovieRatingAvg", 
-			query ="SELECT AVG(Review) FROM Review WHERE MovieID = :movieid GROUP BY MovieID")
+			query ="SELECT AVG(R.Review) as Review FROM Review R WHERE R.Movie.Id = :movieid GROUP BY R.Movie.Id")
 })
 public class Review {
 	
@@ -23,12 +24,12 @@ public class Review {
 	@GeneratedValue(generator="CustomUUID")
 	private String Id;
 	
-	private int Review;
+	private double Review;
 	
-	@OneToOne
+	@ManyToOne
 	private Movie Movie;
 	
-	@OneToOne
+	@ManyToOne
 	private User User;
 	
 	public String getId() {
@@ -37,10 +38,11 @@ public class Review {
 	public void setId(String id) {
 		Id = id;
 	}
-	public int getReview() {
+	
+	public double getReview() {
 		return Review;
 	}
-	public void setReview(int review) {
+	public void setReview(double review) {
 		Review = review;
 	}
 	public Movie getMovie() {

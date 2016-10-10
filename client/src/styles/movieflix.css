@@ -1,0 +1,106 @@
+.MovieFlix-Dashboard {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: dimgrey;
+
+}
+.MovieflixForm{
+    padding: 0rem;
+}
+
+.ListType{
+    background-color: #222222;
+}
+.MoviePoster{
+    display: inline-block;
+    width: 12rem;
+    margin:0.5rem 0.5rem 0.5rem 0.5rem;
+}
+.MoviePoster:hover{
+    transform: scale(1.2);
+}
+.TypeText{
+    padding-left: 1rem;
+    color:#DDDDDD;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: large;
+}
+.navbar-inverse .navbar-brand{
+    color: #d1312b;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    font-size: xx-large;
+    padding: 14px 16px;
+}
+.navbar-inverse .navbar-brand:hover{
+    color: #8B2500;
+}
+.MovieList{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.MovieSearch{
+    padding-left: 29rem;
+    padding-right: 25rem;
+}
+.MovieSearch .form-group{
+    float: left;
+    width: 60rem;
+    height: 32px;
+}
+.SearchBtn{
+    background-color: #222222;
+    color: #d1312b;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.dropbtn {
+    background-color: #d1312b;
+    color: white;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #8B2500;
+}

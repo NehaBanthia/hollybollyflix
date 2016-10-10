@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.neha.movieflix.Entity.Auth;
 import io.neha.movieflix.Entity.User;
 import io.neha.movieflix.Exception.UserNotFoundException;
 import io.neha.movieflix.Repository.UserRepository;
@@ -16,13 +17,32 @@ public class UserServiceImp implements UserService
 	UserRepository repository;
 
 	@Override
-	public User create(User user) {
-		return repository.create(user);
+	public boolean create(User user) {
+		User userDetails=repository.create(user);
+		if(userDetails!=null){
+			return true;
+		}
+		return false;
 	}
 
 	@Override
-	public User authenticate(User user) {
-		return repository.authenticate(user);
+	public Auth authenticate(User user) {
+		Auth authObj=new Auth();
+		try {
+			User userDetails=repository.authenticate(user);
+			
+			if(userDetails!=null){
+				authObj.setIsAuthorized(true);
+				userDetails.setPassword("");
+				authObj.setUser(userDetails);
+				return authObj;
+			}
+			authObj.setIsAuthorized(false);
+			return authObj;
+		} catch (Exception e) {
+			authObj.setIsAuthorized(false);
+			return authObj;
+		}
 	}
 
 	@Override

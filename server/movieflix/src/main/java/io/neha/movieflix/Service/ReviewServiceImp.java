@@ -16,7 +16,7 @@ public class ReviewServiceImp implements ReviewService {
 	
 	@Override
 	@Transactional
-	public Review FindOne(String movieId) {
+	public double FindOne(String movieId) {
 		return repository.FindOne(movieId) ;
 	}
 

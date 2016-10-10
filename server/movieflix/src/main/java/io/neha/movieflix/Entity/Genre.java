@@ -1,5 +1,6 @@
 package io.neha.movieflix.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ public class Genre {
 	@GenericGenerator(strategy="uuid2",name="CustomUUID")
 	@GeneratedValue(generator="CustomUUID")
 	private String Id;
+	
 	private String GenreName;
 	public String getId() {
 		return Id;

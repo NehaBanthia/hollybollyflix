@@ -20,8 +20,8 @@ public class ReviewController {
 	@Autowired
 	ReviewService service;
 	
-	@RequestMapping(method = RequestMethod.GET,path = "movieId", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Review FindOne(@PathVariable("movieId")String movieId) {
+	@RequestMapping(method = RequestMethod.GET,path = "{movieId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public double FindOne(@PathVariable("movieId")String movieId) {
 		return service.FindOne(movieId);
 	}
 	
